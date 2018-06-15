@@ -4,13 +4,14 @@ const app = express();
 const fs = require('fs');
 /*Подключаем свои модули*/
 const generatePdf = require('./generatePdf');
+const getSvg = require('./paintRolletFrontView');
 
 /*Стартовая страница*/
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html')
 });
 
-/*Ловим url downloadPdf*/
+/*Ловим url downloadPdf, отдаем готовую PDF*/
 app.get('/downloadPdf', function (req, res) {
     /*Забираем сгенерированую PDF*/
     let pdf = generatePdf.generatePdf();
@@ -35,6 +36,11 @@ app.get('/downloadPdf', function (req, res) {
             });
         });
     });
+});
+
+/*Ловим url getSvg, отдаем код SVG*/
+app.get('/getSvg', function (req, res) {
+    res.send(getSvg.paintFrontView());
 });
 
 /*Стартуем сервер*/
