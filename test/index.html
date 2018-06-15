@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SVG test</title>
+</head>
+<body>
+
+<script>
+    function getSvg() {
+        var div = document.createElement('div');
+        div.className = "alert alert-success";
+        var parentElem = document.body;
+
+        parentElem.appendChild(div);
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'draws', false);
+
+        xhr.send();
+
+        if (xhr.status != 200) {
+            alert('error')
+        } else {
+            console.log(xhr.responseText);
+            div.innerHTML = xhr.responseText;
+        }
+    }
+
+</script>
+<button onclick="getSvg()">Get svg</button>
+<a href="/downloadPdf"><button>PDF</button></a>
+</body>
+</html>

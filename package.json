@@ -1,0 +1,19 @@
+{
+  "name": "nodesvg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.16.3",
+    "node-static": "^0.7.10",
+    "svg-to-pdfkit": "^0.1.7",
+    "svg.js": "^2.6.5",
+    "svgdom": "0.0.15"
+  },
+  "dependencies": {}
+}
