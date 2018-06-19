@@ -3,51 +3,20 @@ const window = require('svgdom');
 const SVG = require('svg.js')(window);
 const document = window.document;
 /*Подключаем свои модули*/
+const constants = require('./constants');
 const heightProfile = require('./heightProfileFromArt');
 const colordetects = require('./colorsDetect');
 const contrastColors = require('./colorsDetect');
 
-/*-------------------------------*/
-//Константы для отрисовки
-let scaleFromRealSize;
-
-checkScale(2000, 2000);
-
-const GUIDE_RAIL_REAL_SIZE = 53;
-const GUIDE_RAIL_WIDTH = GUIDE_RAIL_REAL_SIZE / scaleFromRealSize;
-const PROTECTIVE_BOX_HEIGHT_REAL_SIZE = 137;
-const PROTECTIVE_BOX_HEIGHT = PROTECTIVE_BOX_HEIGHT_REAL_SIZE / scaleFromRealSize;
-const PROFILE_THICKNESS = 9 / scaleFromRealSize;
-const DEEP_PROTECTIVE_BOX = PROTECTIVE_BOX_HEIGHT;
-const DEEP_PROTECTIVE_BOX_REAL_SIZE = PROTECTIVE_BOX_HEIGHT_REAL_SIZE;
-const GUIDE_RAIL_COLOR = '#3d3533';
-const PROTECTIVE_BOX_COLOR = '#3d3533';
-const WHITE_COLOR = '#fff';
-const LIGHT_GRAY_COLOR = '#8D8A8B';
-
-var WIDTH_APERTURE;
-var WIDTH_APERTURE_REAL_SIZE;
-var HEIGHT_APERTURE;
-var HEIGHT_APERTURE_REAL_SIZE;
-var WIDTH_ROLLET;
-var HEIGHT_ROLLET;
 
 
 //Функция для отрисовки вида снаружи
-var drawPleaseFront = function () {
+const drawPleaseFront = function () {
 
-    checkScale(2000, 2000);
 
     //Инициализируем библиотеку svg.js и задаем размеры полотну для рисования
-    const alurollBody = SVG(document).size(1000, 1000);
+    const alurollBody = SVG(document).size(850, 1000);
 
-    //Константы для отрисовки
-    WIDTH_APERTURE = 2500 / scaleFromRealSize;
-    WIDTH_APERTURE_REAL_SIZE = 2500;
-    HEIGHT_APERTURE = 2500 / scaleFromRealSize;
-    HEIGHT_APERTURE_REAL_SIZE = 2500;
-    WIDTH_ROLLET = Number(WIDTH_APERTURE_REAL_SIZE) + (53 * 2);
-    HEIGHT_ROLLET = Number(HEIGHT_APERTURE_REAL_SIZE) + Number(PROTECTIVE_BOX_HEIGHT_REAL_SIZE);
     const PROFILE_COLOR = '201';
 
     //Глобальный объект, содержащий методы для отрисовки вида снаружи Aluroll в SVG
@@ -236,14 +205,6 @@ var drawPleaseFront = function () {
     return alurollBody.svg();
 };
 
-//Функция масштабирования svg для отрисовки
-function checkScale(width, height) {
-    if (width < 1500 && height < 2000) {
-        scaleFromRealSize = 2.5;
-    } else {
-        scaleFromRealSize = 4
-    }
-}
 
 /*---------------------------------*/
 

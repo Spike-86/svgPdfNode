@@ -4,7 +4,8 @@ const app = express();
 const fs = require('fs');
 /*Подключаем свои модули*/
 const generatePdf = require('./generatePdf');
-const getSvg = require('./paintRolletFrontView');
+const getSvgFrontView = require('./paintRolletFrontView');
+const getSvgSideView = require('./paintRolletSideView');
 
 /*Стартовая страница*/
 app.get('/', function (req, res) {
@@ -38,9 +39,14 @@ app.get('/downloadPdf', function (req, res) {
     });
 });
 
-/*Ловим url getSvg, отдаем код SVG*/
-app.get('/getSvg', function (req, res) {
-    res.send(getSvg.paintFrontView());
+/*Ловим url FrontView, отдаем код SVG*/
+app.get('/FrontView', function (req, res) {
+    res.send(getSvgFrontView.paintFrontView());
+});
+
+/*Ловим url FrontView, отдаем код SVG*/
+app.get('/SideView', function (req, res) {
+    res.send(getSvgSideView.paintSideView());
 });
 
 /*Стартуем сервер*/

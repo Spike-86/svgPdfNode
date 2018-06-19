@@ -7,7 +7,7 @@
 <body>
 
 <script>
-    function getSvg() {
+    function frontView() {
         var div = document.createElement('div');
         div.className = "alert alert-success";
 
@@ -17,7 +17,27 @@
 
         const xhr = new XMLHttpRequest();
 
-        xhr.open('GET', 'getSvg', false);
+        xhr.open('GET', 'FrontView', false);
+
+        xhr.send();
+
+        if (xhr.status != 200) {
+            alert('error')
+        } else {
+            console.log(xhr.responseText);
+            div.innerHTML = xhr.responseText;
+        }
+    }
+    function sideView() {
+        var div = document.createElement('div');
+        div.className = "alert alert-success";
+
+        var parentElem = document.body;
+        parentElem.appendChild(div);
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'SideView', false);
 
         xhr.send();
 
@@ -30,7 +50,8 @@
     }
 
 </script>
-<button onclick="getSvg()">Get svg</button>
+<button onclick="frontView()">FrontView</button>
+<button onclick="sideView()">SideView</button>
 <a href="/downloadPdf"><button>PDF</button></a>
 </body>
 </html>
